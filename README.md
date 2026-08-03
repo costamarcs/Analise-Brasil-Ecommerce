@@ -4,6 +4,8 @@
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![spaCy](https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white)](https://spacy.io/)
+ 
+> **👉 [Clique aqui para acessar o Notebook no Kaggle](https://www.kaggle.com/code/marcoantoniocosta/analysis-with-nlp-spacy-low-customer-reviews)**
 
 ---
 
@@ -15,14 +17,27 @@ Cruzando dados operacionais de logística e prazos com **Processamento de Lingua
 
 ---
 
+## 🗃️ Sobre o Conjunto de Dados
+
+O projeto utiliza o [**Brazilian E-Commerce Public Dataset by Olist**](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), que fornece uma visão rica e detalhada do comércio eletrônico no Brasil. 
+
+* **Escala:** Abrange cerca de 100.000 pedidos realizados entre 2016 e 2018 em múltiplos marketplaces no Brasil.
+* **Estrutura Relacional:** Os dados estão distribuídos em múltiplas tabelas interconectadas por chaves unificadas, cobrindo:
+  * **Pedidos (`orders`):** Status, carimbos de data/hora de compra, aprovação, envio e entrega real vs. estimada.
+  * **Avaliações (`order_reviews`):** Notas de 1 a 5 estrelas atribuídas pelos clientes, além de títulos e comentários textuais (cruciais para a análise de NLP).
+  * **Itens e Produtos (`order_items`, `products`):** Detalhes dos produtos comercializados, categorias e informações de frete.
+  * **Clientes (`customers`) e Vendedores (`sellers`):** Localização geográfica (CEP/Estado) e dados de lojistas parceiros.
+
+---
+
 ## 📊 Principais Resultados & Insights de Negócio
 
 1. **O Peso da Logística na Insatisfação:**  
-   O atraso na entrega foi estatisticamente identificado como um dos principais vetores de avaliações de **1 estrela** (que isoladamente superam a soma das avaliações de 2 e 3 estrelas). A insatisfação escala severamente quando o prazo estimado é ultrapassado em mais de 1 dia.
+   O atraso na entrega foi estatisticamente identificado como um dos principais vetores de avaliações de **1 estrela**. A insatisfação escala severamente quando o prazo estimado é ultrapassado em mais de 1 dia.
 2. **Comportamento do Consumidor (Comentários vs. Notas):**  
-   Cerca de **58,9%** das avaliações não possuem comentários textuais, mas a análise demonstra que clientes tendem a preencher feedback por texto predominantemente quando enfrentam experiências negativas severas.
+   Cerca de **58,9%** das avaliações não possuem comentários textuais, mas a análise demonstra que clientes tendem a preencher feedback por texto predominantemente quando enfrentam experiências negativas severas. As avaliações de 1 estrela isoladamente superam a soma das avaliações de 2 e 3 estrelas.
 3. **Superação de Limitações do Dataset via NLP:**  
-   Como o dataset original carecia de flags diretas para o motivo do descumprimento de expectativas, a aplicação de **NLP com spaCy** permitiu extrair entidades, lemas e padrões semânticos dos comentários, estruturando drivers qualitativos de insatisfação em métricas quantificáveis.
+   Como o dataset original carecía de flags diretas para o motivo do descumprimento de expectativas, a aplicação de **NLP com spaCy** permitiu extrair entidades, lemas e padrões semânticos dos comentários, estruturando drivers qualitativos de insatisfação em métricas quantificáveis.
 
 ---
 
@@ -48,23 +63,12 @@ Cruzando dados operacionais de logística e prazos com **Processamento de Lingua
 
 ## 🚀 Como Executar o Projeto
 
-Você pode interagir com este projeto de duas maneiras:
+### 1. No Kaggle (Opção Recomendada)
+Você pode executar e interagir com o código diretamente no navegador através da plataforma do Kaggle, que já conta com o ambiente configurado e os datasets da Olist integrados:
+* **[Acesse o Notebook no Kaggle](https://www.kaggle.com/code/marcoantoniocosta/analysis-with-nlp-spacy-low-customer-reviews)**
+* *Dica:* Se preferir gerenciar via linha de comando no ambiente Kaggle ou automações, você pode utilizar a **Kaggle CLI** para baixar os datasets ou sincronizar o projeto.
 
-### Opção 1 — Kaggle (Recomendado)
-Acesse e execute o código interativamente no navegador sem precisar instalar nada:
-* **[Link Direto para o Notebook no Kaggle](https://www.kaggle.com/code/marcoantoniocosta/analysis-with-nlp-spacy-low-customer-reviews)**
-
-### Opção 2 — Execução Local
-Caso deseje rodar o ambiente na sua máquina:
+### 2. Clonando o Repositório Localmente
+Caso deseje clonar a estrutura base do projeto para o seu ambiente local:
 ```bash
-# Clone o repositório
 git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-
-# Entre no diretório
-cd seu-repositorio
-
-# Instale as dependências necessárias
-pip install pandas numpy matplotlib seaborn spacy
-
-# Baixe os datasets da Olist no Kaggle e execute o notebook Jupyter
-jupyter notebook
